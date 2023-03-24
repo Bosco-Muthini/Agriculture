@@ -1,0 +1,91 @@
+{%extends 'agric/base.html'%}
+{%load static%}
+{% block content %}
+
+<marquee class="marquee" behavior="alternate" direction="">
+    <h4 style="font-weight: 1000; color:rgb(252, 245, 245);">Dedicated to Unashamed Farmers Community</h4>
+</marquee>
+
+<header>
+    
+        <h2 class="page_title text-align-center">Modules</h2>
+        <div class="h_menu_a">
+            <div class="h_menu_item"> 
+                <h3>Livestock</h3>
+                <p>We do selling and buying of all domestic animals. You can upload animal for sale and also buy them <a href="{%url 'main'%}">here</a>.</p>
+                <ol>
+                    <li>Cattle <a href="{%url 'cattle_list'%}"> Sale & Buy</a></li>
+                    <li>Goat <a href="{%url 'goat_list'%}">Sale & Buy</a></li>
+                    <li>Sheep <a href="{%url 'sheep_list'%}">Sale & Buy</a></li>
+
+                </ol>
+            
+            </div>
+        
+           
+
+
+            <div class="h_menu_item">
+                <h3>Animals Machinery & Tools</h3>
+                <p>Buy any kind of livestock production tools & equipment and machinery <a href="{% url 'machinery' %} ">here</a>.</p>
+                
+            </div>
+        </div>
+        <br>
+        <div>
+        <!-- <img class="mySlides" src="{%static 'media/static/background.jpg'%}" alt="" width="40%">
+        <img class="mySlides" src="{%static 'media/static/FB_IMG_1642141492194.jpgmedia/static/background.jpg'%}" alt="" width="100%">
+        <img class="mySlides" src="{%static 'media/static/background.jpg'%}" alt="" width="100%">
+        <img class="mySlides" src="{%static 'media/static/background.jpg'%}" alt="" width="100%">
+        </div> -->
+        <!-- <div class="h_menu_a">
+            <div class="h_menu_item">
+                <h3>Animals Feeds</h3>
+            </div>
+            
+            <div class="h_menu_item">
+                <h3>Animals Medicine</h3> 
+            </div>
+        </div> -->
+        <!-- <br>
+        <div class="h_menu_a">
+            <div class="h_menu_item"><h3>Famers Class</h3></div>
+        </div> -->
+</header>
+
+
+<!-- <nav class="news">
+<h1>NEWS</h1>
+</nav>
+<div class="container">
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="20%" style="width: 20%">Project progress:20% built</div>
+    </div>
+</div> -->
+Designed By  ENG. B.M.K &middot; 
+<br>
+Copyright &copy; 2022 &middot; ENG.  B.M.K  Technologies. All Rights Reserved.
+
+
+
+
+
+<!-- <script>
+
+var myIndex = 0;
+carousel();
+
+function carousel(){
+    var i;
+    var x=document.getElementsByClassName("mySlides");
+    for (i = 0; i<x.length; i++){
+        x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display="block";
+    setTimeout(carousel, 2000);
+}
+</script> -->
+   
+{%endblock content%}

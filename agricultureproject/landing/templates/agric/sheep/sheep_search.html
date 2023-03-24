@@ -1,0 +1,94 @@
+{%extends 'agric/main.html'%}
+
+{%block content%}
+<h2 class="page_title">Sheep For Sale</h2>
+
+<div class="to_upload">
+    <a  href="{%url 'sheep_list'%}">Back To Sheep List</a>
+</div>
+
+<nav>
+<form method="GET" action="{%url 'sheep_search'%}" class="d-flex">
+    <input class="form-control me-2" name="sheepsearch" type="search" placeholder="Search for sheep based on weight,age,breed,price & location" aria-label="Search">
+    <button class="btn-outline-success" type="submit">Search</button>
+</form>
+</nav>
+
+<table class="table table-dark table-striped table-bordered">
+    <thead>
+        <th>Sheep Picture</th> 
+        <th>Sheep Breed</th>
+        <th>Sheep Type</th>
+        <th>
+            Sheep Age
+            <br>
+            & Weight
+        </th>
+        <th>Health Record Book</th>
+        <th>
+            Owner Name
+            <br>
+            Location
+            <br>
+            & Contact
+        </th>
+        <th>Upload Time</th>
+        <th></th>
+    </thead>
+    <tbody>
+        {%for sheep in object_list%}
+       
+        <tr>
+            <td>
+                {%if sheep.sheep_picture%}
+                <img class="sale-image"  src="{{sheep.sheep_picture.url}}" alt="{{sheep.breed}}" height="100" width="auto">
+                <br> 
+                <b class="price">Maximum Price</b>
+                <br>
+                 <div class="price">Ksh. {{sheep.maximum_selling_price}}</div>
+                {%else%}
+                no picture
+                {%endif%}
+            </td>
+            <td>{{sheep.breed}}</td>
+            <td>{{sheep.sheep_sex_based_on}}</td>
+            <td>
+                {{sheep.sheep_age}} Years
+                <br>
+                <b>Weight : {{sheep.weight}} Kgs</b>
+            </td>
+            <td>
+                <a class="text-white bi bi-download post-link"  href="{{sheep.health_record_book.url}}" target="_blank">
+                    <br>
+                    <br>
+                    Open
+                </a>
+               
+                
+            </td>
+            <td>
+                {{sheep.owner_name}}
+                <br>
+                <b>County Location : {{sheep.location}}</b>
+                <br>
+                <b>Contact : {{sheep.owner_contact}}</b>
+            </td>
+            
+            <td>{{sheep.date_time}}</td>
+            {%if request.user == sheep.owner_name %}
+            <td><a class="btn btn-info ml- " href="{% url 'sheep_edit' sheep.pk%}">Edit</a> | <a class="btn btn-danger ml- " href="#">Delete</a></td>
+            {%else%}
+            
+            <td><a href="{% url 'create_thread' %}"><strong  class="btn btn-info ml- "> Buy</strong></a> <br> Negotiate with <br> owner for buying</td>
+             {%endif%}
+            {%endfor%}
+            
+        </tr>
+    </tbody>
+</table>
+
+Designed By  ENG. B.M.K 
+<br>
+Copyright &copy; 2022 &middot; by  ENG.  B.M.K  Technologies. All Rights Reserved.
+
+{%endblock content%}

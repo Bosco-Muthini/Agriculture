@@ -1,0 +1,14 @@
+{% extends 'agric/base.html' %}
+{% block content %}
+
+<form action="" method="POST" class="login ">
+    <div class="row justify-content-center mt-3 mb-5 ">
+        <div class="col-md-5 col-sm-12 border-bottom bg-success">
+    <h1>Delete</h1>
+    {% csrf_token %}
+<p> {{sheep.owner_name}} are you sure you want to delete goat breed "{{ sheep.breed }}"?</p>
+<button class="btn btn-danger ml- " type="submit">Confirm</button>
+</div>
+</div>
+</form>
+{% endblock content %}

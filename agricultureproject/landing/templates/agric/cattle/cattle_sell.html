@@ -1,0 +1,89 @@
+{% extends 'agric/base.html' %}
+{% block content %}
+<div class="row justify-content-center mt-3 mb-5">
+    <div class="col-md-5 col-sm-12 border-bottom">
+        <div class="d-grid gap-2"> 
+            
+            <button class="btn btn-dark cursor-na " ><h1>Cattle Sell</h1></button>
+        </div>
+    </div>
+</div>
+
+
+    <div class="container">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="row justify-content-center mt-5">
+                <div class="card shadow-sm col-md-8 col-sm-12 border-bottom px-5 pt-3">
+               
+                {%if cattle.cattle_picture%}
+                <img src="{{cattle.cattle_picture.url}}" alt="{{cattle.breed}}" class="post-image">
+         
+                {%else%}
+                no picture
+                {%endif%}
+                <p>Uploaded On <b>{{cattle.date_time}}</b></p> 
+                
+                <hr>
+                <table class="table table-dark table-striped table-bordered">
+                    <thead>
+                        <th>
+                            Owner Name
+                            <br>
+                            Location
+                        </th>
+                        <th>Maximum Price</th>
+                        <th>Cattle Breed</th>
+                        <th>Cattle Type</th>
+                        <th>
+                            Cattle Age
+                            <br>
+                            & Weight
+                        </th>
+                        <th>Health Record</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                {{cattle.owner_name}}
+                                <br>
+                                <i class="bi bi-geo-alt-fill text-danger"></i> {{cattle.location}}
+                            </td>
+                            <td>Ksh. {{cattle.selling_price_range}}</td>
+                            <td>{{cattle.breed}}</td>
+                            <td>{{cattle.cattle_sex_based_on}}</td>
+                            <td>
+                                {{cattle.cattle_age}} Years
+                                <br>
+                                <b>Weight : {{cattle.weight}} Kgs</b>
+                            </td>
+                            <td>
+                                <a class="text-white bi bi-download post-link" href="{{cattle.health_record_book.url}}" target="_blank">
+                                    <br>
+                                    <br>
+                                    Open
+                                </a>
+                                <br>
+                            </td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
+                
+               
+                <button class="btn btn-info ml- " type="submit"><b>Confirm Sell</b>  </button>
+
+                <p class="text-black">Communicate With The Buyer through our <a href="{% url 'create_thread' %}">chat page</a> for efficient delivery.</p>
+                <a class="btn btn-info ml- " href="{%url 'cattle_list'%}">Quit Sell</a>
+            </div>
+           
+        </div>
+       
+    </form>
+   
+    </div>
+
+
+
+
+{% endblock content %}

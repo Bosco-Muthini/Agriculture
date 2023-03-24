@@ -1,0 +1,89 @@
+{% extends 'agric/base.html' %}
+{% block content %}
+<div class="row justify-content-center mt-3 mb-5">
+    <div class="col-md-5 col-sm-12 border-bottom">
+        <div class="d-grid gap-2"> 
+            
+            <button class="btn btn-dark cursor-na " ><h1>Sheep Sell</h1></button>
+        </div>
+    </div>
+</div>
+
+
+    <div class="container">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="row justify-content-center mt-5">
+                <div class="card shadow-sm col-md-8 col-sm-12 border-bottom px-5 pt-3">
+               
+                {%if sheep.sheep_picture%}
+                <img src="{{sheep.sheep_picture.url}}" alt="{{sheep.breed}}" class="post-image">
+         
+                {%else%}
+                no picture
+                {%endif%}
+                <p>Uploaded On <b>{{sheep.date_time}}</b></p> 
+                
+                <hr>
+                <table class="table table-dark table-striped table-bordered">
+                    <thead>
+                        <th>
+                            Owner Name
+                            <br>
+                            Location
+                        </th>
+                        <th>Maximum Price</th>
+                        <th>Sheep Breed</th>
+                        <th>Sheep Type</th>
+                        <th>
+                            Sheep Age
+                            <br>
+                            & Weight
+                        </th>
+                        <th>Health Record</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                {{sheep.owner_name}}
+                                <br>
+                                <i class="bi bi-geo-alt-fill text-danger"></i> {{sheep.location}}
+                            </td>
+                            <td>Ksh.{{sheep.maximum_selling_price}}</td>
+                            <td>{{sheep.breed}}</td>
+                            <td>{{sheep.sheep_sex_based_on}}</td>
+                            <td>
+                                {{sheep.sheep_age}} Years
+                                <br>
+                                <b>Weight : {{sheep.weight}} Kgs</b>
+                            </td>
+                            <td>
+                                <a class="text-white bi bi-download post-link" href="{{sheep.health_record_book.url}}" target="_blank">
+                                    <br>
+                                    <br>
+                                    Open
+                                </a>
+                                <br>
+                            </td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
+                
+               
+                <button class="btn btn-info ml- " type="submit"><b>Confirm Sell</b>  </button>
+
+                <p class="text-black">Communicate With The Buyer through our <a href="{% url 'create_thread' %}">chat page</a> for efficient delivery.</p>
+                <a class="btn btn-info ml- " href="{%url 'goat_list'%}">Quit Sell</a>
+            </div>
+           
+        </div>
+       
+    </form>
+   
+    </div>
+
+
+
+
+{% endblock content %}

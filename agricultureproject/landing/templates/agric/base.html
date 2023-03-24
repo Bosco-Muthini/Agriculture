@@ -1,0 +1,57 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'bosco.css' %}">
+    <link rel="stylesheet" href="{%static 'popper.min.js'%}">
+    <link rel="stylesheet" href="{%static 'font/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{%static 'bootstrap.min.css'%}">
+    <title>Agriculture</title>
+</head>
+<body>
+    {%include 'agric/navbar.html'%}
+ <div class="animal">
+     
+ </div>
+ <h1 class="title_name">DOMESTIC ANIMAL MARKETING</h1>
+
+ 
+ {% if messages %}
+ <div class="row justify-content-center mt-1 mb-5">
+   <div class="col-md-5 col-sm-12 mt-1 border-bottom alert success">
+     <span class="closebtn">&times;</span>
+   <ul>
+     <i class="bi bi-check-lg post-link text-light"></i>
+     <strong>Notification:</strong>
+     {% for message in messages %}
+        {{message}}
+     {% endfor %}
+   </ul>
+ </div>
+ </div>
+ {% endif %}
+
+    {%block content%}
+    
+    {%endblock content%}
+
+
+<script type="text/javascript" src="{% static 'js/boscomu.js' %}"></script>     
+  <script>
+    var close = document.getElementsByClassName("closebtn");
+    var i;
+    for (i = 0; i < close.length; i++){
+        close[i].onclick=function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function(){
+                div.style.display = "none";
+            }, 600);
+        }
+    }
+  </script>
+</body>
+</html>

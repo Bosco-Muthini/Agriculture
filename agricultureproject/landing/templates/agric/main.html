@@ -1,0 +1,158 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'bosco.css'%}">
+    <link rel="stylesheet" href="{%static 'font/bootstrap-icons.css' %}">
+    <script type="text/javascript" src="{% static 'js/boscomu.js' %}"></script>
+
+    <title>Agriculture</title>
+</head>
+<body class="body">
+    {%include 'agric/navbar.html'%}
+
+ 
+{% if messages %}
+<div class="row justify-content-center mt-1 mb-5">
+  <div class="col-md-5 col-sm-12 mt-1 border-bottom alert success">
+    <span class="closebtn">&times;</span>
+  <ul>
+    <i class="bi bi-check-lg post-link text-light"></i>
+    <strong>Notification:</strong>
+    {% for message in messages %}
+       {{message}}
+    {% endfor %}
+  </ul>
+</div>
+</div>
+{% endif %}
+
+
+
+{%block title%}
+
+{%endblock title%}
+{%if user.is_authenticated%}
+
+<h1 class="title_name">DOMESTIC ANIMAL MARKETING</h1>
+<div class="marquee">
+    <marquee class="marquee" behavior="alternate" direction="">
+        <div>
+            <h3>Welcome {{user.username}} <i class="bi bi-person-fill"></i>. <strong>You logged in on {{user.last_login}}</strong></h3> 
+        </div>
+    </marquee>
+</div>
+    
+ 
+    <ul class="menu">
+    <li class="menu-item"><a href="{%url 'animals'%}">Livestock</a></li>
+    
+    <li class="menu-item"><a href="{%url 'machinery'%}">D. A Machinery Tools & Equipment</a></li>
+    
+    <li class="menu-item"><a href="{%url 'animalfeed'%}"></a></li>
+    
+    <li class="menu-item"><a href="{%url 'animalmedicine'%}"></a></li>
+    
+    <li class="menu-item"> <a href="{%url 'index'%}"></a></li>
+    </ul>
+{%else%}
+    <p>You are not logged in</p>
+   
+{%endif%}
+{%block content%}
+{%if user.is_authenticated%}
+<h2 class="page_title">Domestic Animals Page</h2>
+
+<!-- <div class="h_menu"> -->
+    <div class="h_menu_a">
+        <div class="h_menu_item ">
+            <h3>Cattle</h3>
+            <p>Welcome to this cattle page. Here you can <a href="{%url 'cattle_upload'%}">upload</a>  cattle of any age or breed for sale.
+                You can also buy cattle of your desire from various farmers who have uploaded their cattle for sale. 
+                You can communicate with the owner of the cattle through the provided number for negotiation in buying also you can chat with the owner by clicking the buy button then enter the name of the owner.</p>
+            <p class="menu_item_link">Buy And Sale Cattle : <a href="{%url 'cattle_list'%}">View Cattle For Sale</a></p> 
+      
+        </div>
+    
+        <div class="h_menu_item ">
+            <h3 >Goat</h3>
+            <p>Welcome to this goat page. Here you can <a href="{%url 'goat_upload'%}">upload</a>  goat of any age or breed for sale.
+                You can also buy goat of your desire from various farmers who have uploaded their goat for sale. 
+                You can communicate with the owner of the goat through the provided number for negotiation in buying also you can chat with the owner by clicking the buy button then enter the name of the owner.</p>
+            <p class="menu_item_link">Buy And Sale Goat : <a href="{%url 'goat_list'%}">View Goat List</a></p> 
+        </div>
+    </div> 
+    <br>
+    <div class="h_menu_a">
+        <div class="h_menu_item">
+            <h3>Sheep</h3>
+            <p class="menu_item_link">Buy And Sale Sheep : <a href="{%url 'sheep_list'%}">View Sheep List</a></p> 
+        </div> 
+    
+        <div class="h_menu_item">
+            <h3>Pig</h3>
+            <p class="menu_item_link">Buy And Sale Pig : <a href="#">View Pig List</a></p> 
+        </div>
+    </div>
+    <br>
+    <div class="h_menu_a">
+        <div class="h_menu_item">
+            <h3>Donkey</h3>
+            <p class="menu_item_link">Buy And Sale Donkey : <a href="#">View Donkey List</a></p> 
+        </div> 
+    
+        <div class="h_menu_item">
+            <h3>Rabbit</h3>
+            <p class="menu_item_link">Buy And Sale Rabbit : <a href="#">View Rabbit List</a></p> 
+        </div> 
+    </div>
+    <br>
+    <div class="h_menu_a">
+        <div class="h_menu_item">
+            <h3>Camel</h3>
+            <p class="menu_item_link">Buy And Sale Camel : <a href="#">View Camel List</a></p> 
+        </div> 
+    
+        <div class="h_menu_item">
+            <h3></h3>
+            <p class="menu_item_link">Buy And Sale  : <a href="#">View List</a></p> 
+        </div> 
+    </div>
+<!-- </div> -->
+ 
+<br>
+<ol>
+    <h3>Other Farm Fields</h3>
+   
+    <li><a href="#">Poultry</a></li>
+    <li><a href="#">Crop Planting</a></li>
+</ol>
+    
+
+Designed By  ENG. B.M.K 
+<br>
+Copyright &copy; 2023 &middot; by ENG.  B.M.K  Technologies. All Rights Reserved.
+{%endif%}
+{%endblock content%}
+
+
+<script>
+    var close = document.getElementsByClassName("closebtn");
+    var i;
+    for (i = 0; i < close.length; i++){
+        close[i].onclick=function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function(){
+                div.style.display = "none";
+            }, 600);
+        }
+    }
+  </script>
+</body>
+</html>

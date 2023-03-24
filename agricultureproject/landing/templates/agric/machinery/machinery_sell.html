@@ -1,0 +1,101 @@
+{% extends 'agric/base.html' %}
+{% block content %}
+<div class="row justify-content-center mt-3 mb-5">
+    <div class="col-md-5 col-sm-12 border-bottom">
+        <div class="d-grid gap-2"> 
+            
+            <button class="btn btn-dark cursor-na " ><h1>Machinery Sell</h1></button>
+        </div>
+    </div>
+</div>
+
+
+    <div class="container">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="row justify-content-center mt-5">
+                <div class="card shadow-sm col-md-8 col-sm-12 border-bottom px-5 pt-3">
+               
+                {%if machinery.machinery_tool_picture%}
+                <img class="post-image" src="{{machinery.machinery_tool_picture.url}}" alt="{{machinery.tool_name}}">
+            
+         
+                {%else%}
+                no picture
+                {%endif%}
+                <p>Uploaded On <b>{{machinery.date_time}}</b></p> 
+                
+                <hr>
+                <table class="table table-dark table-striped table-bordered">
+                    <thead>
+                        <th>
+                            Owner Name
+                            <br>
+                            Location
+                        </th>
+                        <th>
+                            Tool Name
+                            <br>
+                            Number Of Tools
+                        </th>
+                        <th>Maximum Price</th>
+                        <th>Cattle Type</th>
+                        <th>
+                            Usage Brief &
+                            <br>
+                            Specific Animal Type
+                            <br>
+                            For Usage
+                        </th>
+                        <th> 
+                            Machinery,Tool & 
+                            <br>
+                            Equipment Purpose
+                        </th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                {{machinery.owner_name}}
+                                <br>
+                                <i class="bi bi-geo-alt-fill text-danger"></i> {{machinery.location}}
+                                
+                               
+                            </td>
+                            <td>
+                                {{machinery.tool_name}}
+                                <br>
+                                <b>Quantity : </b>{{machinery.tools_number}}
+                            </td>
+                            <td>Ksh. {{machinery.maximum_selling_price}}</td>
+                            <td></td>
+                            <td>
+                                {{machinery.brief_its_usage}}
+                                <br>
+                                <b>Animal Type : </b>{{machinery.animal_type}},{{machinery.animals_type}}
+                            </td>
+                            <td>
+                                {{machinery.tool_purpose}}
+                            </td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
+                
+               
+                <button class="btn btn-info ml- " type="submit"><b>Confirm Sell</b>  </button>
+
+                <p class="text-black">Communicate With The Buyer through our <a href="{% url 'create_thread' %}">chat page</a> for efficient delivery.</p>
+                <a class="btn btn-info ml- " href="{%url 'machinery'%}">Quit Sell</a>
+            </div>
+           
+        </div>
+       
+    </form>
+   
+    </div>
+
+
+
+
+{% endblock content %}

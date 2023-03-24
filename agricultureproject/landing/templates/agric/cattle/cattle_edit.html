@@ -1,0 +1,25 @@
+{% extends 'agric/base.html' %}
+{%load crispy_forms_tags%}
+{% block content %}
+
+
+
+<div class="row justify-content-center mt-3 mb-5 ">
+    <div class="col-md-5 col-sm-12 border-bottom form__input">
+        <h2 class="page_title">Cattle Update</h2>
+    </div>
+</div>
+<form class="login" action="" method="POST" enctype="multipart/form-data" >
+    {%csrf_token%}
+    <div class="row justify-content-center mt-3 mb-5 ">
+        <div class="col-md-5 col-sm-12 border-bottom form__input">
+            {{form | crispy}}
+            <div class="d-grid gap-2"> 
+                <button class="btn btn-success mt-3" type="submit">Update</button>
+            </div>
+            <br>
+            <a class="btn btn-info ml- " href="{%url 'cattle_list'%}">Quit Update</a>
+        </div>
+    </div>
+</form>
+{% endblock content %}
